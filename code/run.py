@@ -19,8 +19,7 @@ torch.backends.cudnn.benchmark = False
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    # parser.add_argument('-input_path', type = str, default = '/home/nguyen/2024www/data/chatgpt/processed_nequake/all.csv')
-    parser.add_argument('-input_path', type = str, default = "/home/nguyen/hnt/tweet_interpret_sum/datasets/labeled_data/2015_Nepal_Earthquake_en_CF_labeled_data_final2.csv")
+    parser.add_argument('-input_path', type = str, default = '../data/gpt.csv')
     parser.add_argument('-random_state', type = int, default = 12)
     parser.add_argument('-model_config', type = str, default = 'vinai/bertweet-base')
     parser.add_argument('-cls_hidden_size', type = int, default = 128)
@@ -28,7 +27,7 @@ if __name__ == "__main__":
     parser.add_argument('--ignored_exp_percent', type = float, default = 0.9)
     parser.add_argument('-lr', type = float, default = 2e-5, help = 'learning rate')
     parser.add_argument('-max_len', type = int, default = 128)
-    parser.add_argument('-n_epochs', type = int, default = 2)
+    parser.add_argument('-n_epochs', type = int, default = 10)
     parser.add_argument('-n_folds', type = int, default = 5)
     parser.add_argument('-patience', type = int, default = 3)
     parser.add_argument('-test_size', type = int, default = 0.15)
@@ -37,14 +36,9 @@ if __name__ == "__main__":
     parser.add_argument('-sep_exp_token', type = str, default = ' _sep_exp_token_ ')
     parser.add_argument('-id_col', type = str, default = 'tweet_id')
     parser.add_argument('-text_col', type = str, default = 'tweet_text')
-    parser.add_argument('-label_col', type = str, default = 'corrected_label')
-    # parser.add_argument('-exp_col', type = str, default = 'rationales')
-    parser.add_argument('-exp_col', type = str, default = 'informative_content')
+    parser.add_argument('-label_col', type = str, default = 'cls_labels')
+    parser.add_argument('-exp_col', type = str, default = 'gpt_rationales')
     parser.add_argument('-device', type = str, default = 'cuda')
-    parser.add_argument('-r_weight', type = float, default = 0.5)
-    parser.add_argument('-nr_weight', type = float, default= 0.5)
-    parser.add_argument('-saved_model_path', type = str, default = "../data/saved_models/")
-
     parser.add_argument('-event_type', type = str, default = 'quake', help = 'quake/typhoon')
 
 
